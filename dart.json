@@ -1,0 +1,14 @@
+{
+  "Create a JSONSerializable Model": {
+    "prefix": "jsm",
+    "body": [
+      "@JsonSerializable()",
+      "class $1 {",
+      "\t$1()",
+      "\tfactory $1.fromJson(Map<String, dynamic> json) => _$$1FromJson(json);",
+      "\tMap<String, dynamic> toJson() => _$$1ToJson(this);",
+      "}"
+    ],
+    "description": "Creates a JSONSerializable Model inside a dartlang file. Useful for flutter and dart for web."
+  }
+}
