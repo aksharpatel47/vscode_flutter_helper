@@ -1,7 +1,19 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { spawn } from "child_process";
+import { spawn, ChildProcess } from "child_process";
+import * as kill from "tree-kill";
+
+let _channel: vscode.OutputChannel;
+let _watchProcess: ChildProcess;
+
+function getOutputChannel(): vscode.OutputChannel {
+  if (!_channel) {
+    _channel = vscode.window.createOutputChannel("Flutter Helper Logs");
+  }
+
+  return _channel;
+}
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -39,14 +51,17 @@ export function activate(context: vscode.ExtensionContext) {
 
       process.stdout.on("data", data => {
         console.log(`stdout: ${data}`);
+        getOutputChannel().appendLine(data);
       });
 
       process.stderr.on("data", data => {
         console.error(`stderr: ${data}`);
+        getOutputChannel().appendLine(data);
       });
 
       process.on("close", code => {
         console.log(`child process exited with code ${code}`);
+        getOutputChannel().appendLine(`child process exited with code ${code}`);
       });
 
       // Display a message box to the user
@@ -58,37 +73,54 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(
     vscode.commands.registerCommand("flutterHelper.genModelWatch", () => {
-      let process = spawn(
-        "flutter",
-        [
-          "packages",
-          "pub",
-          "run",
-          "build_runner",
-          "watch",
-          "--delete-conflicting-outputs"
-        ],
-        {
-          shell: true,
-          cwd: vscode.workspace.rootPath
-          //   detached: true
-        }
-      );
+      if (_watchProcess && !_watchProcess.killed) {
+        vscode.window.showInformationMessage("Stopped Codegen Process");
+        kill(_watchProcess.pid);
+        _watchProcess.kill();
+      } else {
+        vscode.window.showInformationMessage("Started Codegen Process");
+        _watchProcess = spawn(
+          "flutter",
+          [
+            "packages",
+            "pub",
+            "run",
+            "build_runner",
+            "watch",
+            "--delete-conflicting-outputs"
+          ],
+          {
+            shell: true,
+            cwd: vscode.workspace.rootPath
+            //   detached: true
+          }
+        );
 
-      process.stdout.on("data", data => {
-        console.log(`stdout: ${data}`);
-      });
+        _watchProcess.stdout.on("data", data => {
+          console.log(`stdout: ${data}`);
+          getOutputChannel().appendLine(data);
+        });
 
-      process.stderr.on("data", data => {
-        console.error(`stderr: ${data}`);
-      });
+        _watchProcess.stderr.on("data", data => {
+          console.error(`stderr: ${data}`);
+          getOutputChannel().appendLine(data);
+        });
 
-      process.on("close", code => {
-        console.log(`child process exited with code ${code}`);
-      });
+        _watchProcess.on("close", code => {
+          console.log(`child process exited with code ${code}`);
+          getOutputChannel().appendLine(
+            `child process exited with code ${code}`
+          );
+        });
+      }
     })
   );
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+  if (_watchProcess && !_watchProcess.killed) {
+    kill(_watchProcess.pid);
+    _watchProcess.kill();
+  }
+}

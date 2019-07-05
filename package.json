@@ -24,11 +24,11 @@
     "commands": [
       {
         "command": "flutterHelper.genModel",
-        "title": "Flutter Helper: Generate JSONSerializable Model Code"
+        "title": "Flutter Helper: Code gen for JSONSerializable Classes"
       },
       {
         "command": "flutterHelper.genModelWatch",
-        "title": "Flutter Helper: Generate JSONSerializable Model Code & Watch For Changes"
+        "title": "Flutter Helper: Toggle Watch mode for Code gen for JSONSerializable Classes"
       }
     ],
     "snippets": [
@@ -55,5 +55,8 @@
     "typescript": "^3.3.1",
     "tslint": "^5.12.1",
     "vscode-test": "^1.0.0-next.0"
+  },
+  "dependencies": {
+    "tree-kill": "^1.2.1"
   }
 }
