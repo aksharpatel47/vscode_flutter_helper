@@ -2,6 +2,6 @@
 
 Currently the flutter helper does the following:
 
-- Snippet for creating JSONSerializable annotated model: `jsm`
+- Snippet for creating JSONSerializable annotated model: `jsc`
 - Run Code Gen for JSONSerializable annotated models.
 - Have build runner watch the JSONSerializable annotated models and generate code on changes.
