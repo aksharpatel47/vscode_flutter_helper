@@ -10,14 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.helloWorld"
+    "onCommand:flutterHelper.genModel"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "extension.helloWorld",
-        "title": "Hello World"
+        "command": "flutterHelper.genModel",
+        "title": "Flutter Helper: Generate JSONSerializable Model Code"
       }
     ],
     "snippets": [
