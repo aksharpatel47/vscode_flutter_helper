@@ -55,6 +55,39 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(disposable);
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("flutterHelper.genModelWatch", () => {
+      let process = spawn(
+        "flutter",
+        [
+          "packages",
+          "pub",
+          "run",
+          "build_runner",
+          "watch",
+          "--delete-conflicting-outputs"
+        ],
+        {
+          shell: true,
+          cwd: vscode.workspace.rootPath
+          //   detached: true
+        }
+      );
+
+      process.stdout.on("data", data => {
+        console.log(`stdout: ${data}`);
+      });
+
+      process.stderr.on("data", data => {
+        console.error(`stderr: ${data}`);
+      });
+
+      process.on("close", code => {
+        console.log(`child process exited with code ${code}`);
+      });
+    })
+  );
 }
 
 // this method is called when your extension is deactivated
