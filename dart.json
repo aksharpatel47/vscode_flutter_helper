@@ -1,10 +1,12 @@
 {
-  "Create a JSONSerializable Model": {
-    "prefix": "jsm",
+  "Create a JSONSerializable Class": {
+    "prefix": "jsc",
     "body": [
       "@JsonSerializable()",
       "class $1 {",
+      "",
       "\t$1();",
+      "",
       "\tfactory $1.fromJson(Map<String, dynamic> json) => _$$1FromJson(json);",
       "\tMap<String, dynamic> toJson() => _$$1ToJson(this);",
       "}"
