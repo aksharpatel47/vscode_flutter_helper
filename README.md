@@ -1,7 +1,19 @@
 # vscode-flutter-helper README
 
-Currently the flutter helper does the following:
+## Features
 
-- Snippet for creating JSONSerializable annotated model: `jsc`
-- Run Code Gen for JSONSerializable annotated models.
-- Have build runner watch the JSONSerializable annotated models and generate code on changes.
+### Snippet for setting up a file with JSONSerializable annotated classes: `jsf`
+
+![jsf](media/jsf.gif)
+
+### Snippet for creating JSONSerializable annotated model: `jsc`
+
+![jsc](media/jsc.gif)
+
+### Run Code Gen for JSONSerializable annotated classes
+
+![code gen](media/build.gif)
+
+### Have build runner watch the JSONSerializable annotated classes and generate code on changes
+
+![code gen & watch](media/watch.gif)
