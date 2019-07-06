@@ -12,5 +12,14 @@
       "}"
     ],
     "description": "Creates a JSONSerializable Model inside a dartlang file. Useful for flutter and dart for web."
+  },
+  "Setup file for JSONSerializable annotation & Code Gen": {
+    "prefix": "jsf",
+    "body": [
+      "import 'package:json_annotation/json_annotation.dart';",
+      "",
+      "part '$TM_FILENAME_BASE.g.dart';"
+    ],
+    "description": "Setup a file which will have JSONSerializable annotated classes."
   }
 }
