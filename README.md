@@ -4,10 +4,10 @@ This extension currently helps you to easily write JSONSerializable annotated cl
 
 ## Setup your flutter project for code generation for JSONSerializable annotations
 
-In your pubspec.yaml file add the following libraries in the `devdependencies` and `dependencies` section:
+In your pubspec.yaml file add the following libraries in the `dev_dependencies` and `dependencies` section:
 
 ```
-devdependencies:
+dev_dependencies:
     // ...
     build_runner: ^1.0.0
     json_serializable: ^3.0.0
