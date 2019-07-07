@@ -1,4 +1,21 @@
-# vscode-flutter-helper README
+# Fluter Helpers VSCode Extension
+
+This extension currently helps you to easily write JSONSerializable annotated classes and allows you to run code generation for those classes. You can also watch the files so that code generation is faster.
+
+## Setup your flutter project for code generation for JSONSerializable annotations
+
+In your pubspec.yaml file add the following libraries in the `devdependencies` and `dependencies` section:
+
+```
+devdependencies:
+    // ...
+    build_runner: ^1.0.0
+    json_serializable: ^3.0.0
+
+dependencies:
+    // ...
+    json_annotation: ^2.4.0
+```
 
 ## Features
 
