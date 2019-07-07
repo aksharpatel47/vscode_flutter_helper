@@ -1,4 +1,4 @@
-# Fluter Helpers VSCode Extension
+# Flutter Helpers VSCode Extension
 
 This extension currently helps you to easily write JSONSerializable annotated classes and allows you to run code generation for those classes. You can also watch the files so that code generation is faster.
 
