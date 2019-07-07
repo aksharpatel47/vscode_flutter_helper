@@ -2,7 +2,7 @@
   "name": "vscode-flutter-helper",
   "displayName": "Flutter Helpers",
   "description": "Helper utilities for flutter projects",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "aksharpatel47",
   "icon": "media/flutter.png",
   "repository": {
