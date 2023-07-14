@@ -19,6 +19,10 @@ dependencies:
 
 ## Features
 
+### Snippet for setting up a file with JSONSerializable annotated classes and creating JSONSerializable annotated model: `jsi`
+
+![jsi](media/jsi.gif)
+
 ### Snippet for setting up a file with JSONSerializable annotated classes: `jsf`
 
 ![jsf](media/jsf.gif)
